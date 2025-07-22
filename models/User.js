@@ -7,7 +7,7 @@ const userSchema = new Schema(
     email: {
       type: String,
       unique: true,
-      required: true,
+      required: true
     },
     username: {
       type: String,
@@ -19,11 +19,13 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
-    list: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Todo',
-      default: null
-    }]
+    list: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Todo',
+        default: null
+      }
+    ]
   },
   {
     timestamps: true

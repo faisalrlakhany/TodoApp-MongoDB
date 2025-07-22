@@ -51,7 +51,10 @@ router.put('/updateTodo/:id', async (req, res) => {
 router.delete('/deleteTodo/:id', async (req, res) => {
   try {
     const { email } = req.body
-    const existUser = await User.findOneAndUpdate({ email } , { $pull: { list: req.params.id } })
+    const existUser = await User.findOneAndUpdate(
+      { email },
+      { $pull: { list: req.params.id } }
+    )
     if (!existUser) {
       return sendResponse(res, 404, null, 'Login First')
     }
