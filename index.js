@@ -5,6 +5,8 @@ import 'dotenv/config'
 import mongoose from "mongoose"
 import morgan from "morgan";
 import authRouter from "./routers/auth.js";
+import todoRouter from "./routers/todo.js";
+
 
 const app = express();
 const PORT = 4000
@@ -28,6 +30,7 @@ app.get("/" , (req , res)=>{
 
 
 app.use("/todo" , authRouter)
+app.use("/todo" , todoRouter)
 
 
 app.listen(PORT , ()=>{

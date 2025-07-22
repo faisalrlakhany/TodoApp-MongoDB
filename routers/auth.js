@@ -10,7 +10,7 @@ const router = express.Router()
 router.post('/register', async (req, res) => {
   try {
     const { email, username, password } = req.body
-    const hashedPassword = bcrypt.hashSync(password, process.env.SaltRounds)
+    const hashedPassword = bcrypt.hashSync(password, 10)
     const newUser = new User({ email, username, password: hashedPassword })
     await newUser.save()
     sendResponse(res, 200, newUser, 'User registered successfully')

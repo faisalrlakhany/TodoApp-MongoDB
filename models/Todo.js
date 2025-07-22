@@ -12,11 +12,11 @@ const todoSchema = new Schema(
       type: String,
       required: true
     },
-    user: {
+    user: [{
       type: mongoose.Schema.Types.ObjectId ,
       ref: 'User',
       default: null
-    }
+    }]
   },
   {
     timestamps: true

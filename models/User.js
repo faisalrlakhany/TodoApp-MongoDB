@@ -19,11 +19,11 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
-    list: {
+    list: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Todo',
       default: null
-    }
+    }]
   },
   {
     timestamps: true
