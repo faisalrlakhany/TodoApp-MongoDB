@@ -6,10 +6,12 @@ const userSchema = new Schema(
   {
     email: {
       type: String,
+      unique: true,
       required: true,
     },
     username: {
       type: String,
+      unique: true,
       required: true
     },
 
@@ -18,8 +20,9 @@ const userSchema = new Schema(
       required: true
     },
     list: {
-      type: mongoose.types.ObjectId,
-      ref: 'Todo'
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Todo',
+      default: null
     }
   },
   {

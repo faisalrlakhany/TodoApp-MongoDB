@@ -13,8 +13,9 @@ const todoSchema = new Schema(
       required: true
     },
     user: {
-      type: mongoose.types.ObjectId,
-      ref: 'User'
+      type: mongoose.Schema.Types.ObjectId ,
+      ref: 'User',
+      default: null
     }
   },
   {
