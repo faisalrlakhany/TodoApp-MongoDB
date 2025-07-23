@@ -71,4 +71,23 @@ router.delete('/deleteTodo/:id', async (req, res) => {
   }
 })
 
+// get todo
+router.get('/getTodo/:id', async (req, res) => {
+  try {
+    const allTodo = await Todo.find({ user: req.params.id }).sort({
+      createdAt: -1
+    })
+
+    if (allTodo.length === 0) {
+      sendResponse(res, 200, null, 'No Todos Found')
+    }
+
+    sendResponse(res, 200, allTodo, 'Todo Fetched Successfully')
+  } catch (error) {
+    console.log('Error ===> ', error)
+
+    sendResponse(res, 400, null, 'Error retrieving todos: ')
+  }
+})
+
 export default router
