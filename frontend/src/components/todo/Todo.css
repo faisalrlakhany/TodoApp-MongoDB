@@ -14,3 +14,30 @@
 #textarea {
   display: none;
 }
+.todo-card
+{
+  border: 1px solid black;
+}
+.todo-card-p
+{
+  text-align: justify;
+  text-justify: inter-word;
+}
+.card-icons
+{
+  font-size: 22px;
+  cursor: pointer;
+}
+.del
+{
+  color: red;
+}
+.card-icon-head
+{
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.card-icon-head:hover
+{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 11px;
+}
