@@ -13,10 +13,9 @@ router.post('/register', async (req, res) => {
     const hashedPassword = bcrypt.hashSync(password, 10)
     const newUser = new User({ email, username, password: hashedPassword })
     await newUser.save()
-    sendResponse(res, 200, newUser, 'User registered successfully')
+    sendResponse(res, 200, 'User registered successfully')
   } catch (error) {
-    console.log('Error ===> ', error)
-    sendResponse(res, 400, null, 'Email Already Registered: ')
+    sendResponse(res, 200, 'Email Already Registered ')
   }
 })
 
@@ -27,12 +26,12 @@ router.post('/login', async (req, res) => {
     const user = await User.findOne({email : req.body.email})
 
     if (!user) {
-        sendResponse(res, 404, null, 'Please Register First')
+        sendResponse(res, 200, null, 'Please Register First')
     }
 
     const isPasswordValid = bcrypt.compareSync(req.body.password, user.password)
     if (!isPasswordValid) {
-      return sendResponse(res, 401, null, 'Invalid Credentials')
+      return sendResponse(res, 200, 'Invalid Credentials')
     }
 
     const { password, ...userData } = user._doc
@@ -41,7 +40,7 @@ router.post('/login', async (req, res) => {
 
   } catch (error) {
     console.log('Error ===> ', error)
-    sendResponse(res, 400, null, 'Email Already Registered: ')
+    sendResponse(res, 200, null, 'Email Already Registered: ')
   }
 })
 

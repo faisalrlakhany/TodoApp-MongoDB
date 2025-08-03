@@ -4,12 +4,14 @@ import mongoose from 'mongoose'
 import morgan from 'morgan'
 import authRouter from './routers/auth.js'
 import todoRouter from './routers/todo.js'
+import cors from 'cors'
 
 const app = express()
 const PORT = 4000
 
 app.use(express.json())
 app.use(morgan('tiny'))
+app.use(cors())
 
 mongoose
   .connect(process.env.MONGODBURI)
