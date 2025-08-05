@@ -4,8 +4,11 @@ import HeadingComp from "./HeadingComp.jsx";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../store/index.js";
 
 const Signin = () => {
+  const dispatch = useDispatch();
   const history = useNavigate();
 
   const [inputs, setInputs] = useState({
@@ -25,8 +28,8 @@ const Signin = () => {
     e.preventDefault();
     await axios.post("http://localhost:4000/todo/login", inputs).then((res) => {
       const responseMsg = res.data.data._id;
-      console.log(responseMsg);
-
+      sessionStorage.setItem("userId", responseMsg);
+      dispatch(authActions.login());
       history("/todo");
     });
   };
